@@ -17,7 +17,7 @@ function App() {
         <Temperature data={searchValue} />
         <Details />
       </div>
-      <div className="input-group flex-nowrap mt-1">
+      <div className="input-group flex-nowrap">
         <input
           type="text"
           className="form-control"
