@@ -1,17 +1,31 @@
 interface Props {
-  data: string;
+  data: any;
 }
 const Temperature = ({ data }: Props) => {
+  let icon = "10d";
+  let location = "Cebu City";
+  let desc = '';
+  let temp = 0;
+  let country = 'PH';
+ 
+  if(data.api !==''){
+    icon =  "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+    location =  data.name;
+    desc =  data.weather[0].description;
+    temp = data.main.temp - 273.15;
+    country = data.sys.country;
+  }
+
   return (
     <>
-      <div className="col-md-6 d-inline-block">
-        <img id="icon" src="http://openweathermap.org/img/w/10d.png" />
+      <div className="col-md-7 d-inline-block">
+        <img id="icon" src={icon} />
         <h4>
-          <span id="location">Cebu City</span>, <span id="country">PH</span>
+          <span id="location">{location}</span>, <span id="country">{country}</span>
         </h4>
-        <p id="description">Overcast clouds</p>
+        <p id="description">{desc}</p>
         <h1>
-          <span id="temp">20 </span> &#8451;
+          <span id="temp">{temp.toFixed(2)} </span> &#8451;
         </h1>
       </div>
     </>
