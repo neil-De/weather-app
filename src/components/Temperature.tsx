@@ -8,6 +8,7 @@ const Temperature = ({ data }: Props) => {
   let temp = 0;
   let country = 'PH';
  
+  //check api empty
   if(data.api !==''){
     icon =  "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
     location =  data.name;
